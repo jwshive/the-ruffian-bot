@@ -19,6 +19,7 @@
     "dotenv": "^8.2.0",
     "mongoose": "^5.12.1",
     "mongoose-simple-random": "^0.4.1",
+    "node-cron": "^3.0.0",
     "quick-chat-bot": "^0.9.1"
   }
 }

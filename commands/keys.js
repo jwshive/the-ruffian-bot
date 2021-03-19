@@ -1,0 +1,55 @@
+const Key = require("../models/Key");
+
+module.exports = {
+  text: "!keys",
+  callback: (msg) => {
+    if (msg.content.length <= 6) {
+      Key.find((err, result) => {
+        console.log(`Keys: ${result}`);
+        //let embed = blameEmbed(msg, result);
+      });
+    } else {
+      let keyBits = msg.content.substring(6);
+      let key_level = Number(keyBits.match(/\d+/g).map(Number));
+      let key_instance = keyBits
+        .match(/[a-z A-Z]+/g)
+        .toString()
+        .trim();
+
+      // Check if this person already has a key, if not, new key, if so, delete then add new key.
+      Key.find({ key_holder: msg.member.displayName }, (err, results) => {
+        if (!results.length) {
+          const key = new Key({
+            key_level: key_level,
+            key_instance: key_instance,
+            key_holder: msg.member.displayName,
+          });
+          key
+            .save()
+            .then((result) => {
+              msg.reply("New Key Added.");
+              console.log(`Key saved. ${result}`);
+            })
+            .catch((err) => {
+              console.log(err.code);
+              if (err.code === 11000) {
+                msg.reply("You've already recorded your key.");
+              }
+              console.log(`Key Save Error: ${err}`);
+            });
+        } else {
+          const filter = {
+            key_holder: msg.member.displayName,
+          };
+          const update = {
+            key_level: key_level,
+            key_instance: key_instance,
+          };
+          Key.findOneAndUpdate(filter, update, { new: true }, (result) => {
+            msg.reply("I've updated your key, thanks!");
+          });
+        }
+      });
+    }
+  },
+};

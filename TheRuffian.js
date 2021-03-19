@@ -51,3 +51,7 @@ mongoose
   })
   .then(() => console.log("Mongo Engaged"))
   .catch((err) => console.log(`Mongo Error: ${err}`));
+
+// Scheduled Tasks
+// Clear the keys on Tuesday at 10am.
+const clearKeys = require("./cron/remove-keys");
