@@ -17,7 +17,7 @@ const bot = new QuickDiscordBot({
 bot.connect();
 
 bot.client.on("ready", () => {
-  bot.client.user.setActivity("Dirty");
+  bot.client.user.setActivity("Dreams Shatter", {type: "WATCHING"});
 });
 
 // Create an event listener for new guild members
