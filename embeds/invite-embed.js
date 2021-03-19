@@ -5,7 +5,7 @@ let joinUsGif =
 function inviteEmbed(msg, invite) {
   const embed = new Discord.MessageEmbed()
     .setAuthor(msg.client.user.username)
-    .setTitle(`Your invite, ${msg.author.tag}`)
+    .setTitle(`Your invite, ${msg.member.displayName}`)
     .setDescription(invite)
     .setImage(joinUsGif);
   msg.reply(embed);
