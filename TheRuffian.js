@@ -16,6 +16,7 @@ if (process.env.NODE_ENV === "production") {
   console.log("running with the dev token");
 }
 
+// Setup the Bot
 const bot = new QuickDiscordBot({
   botToken: bot_token,
   commandsDir: path.join(__dirname, "commands"),
@@ -25,8 +26,10 @@ const bot = new QuickDiscordBot({
   ignoreBots: true,
 });
 
+// Start the bot
 bot.connect();
 
+// Get this bread
 bot.client.on("ready", () => {
   bot.client.user.setActivity("Dreams Shatter", { type: "WATCHING" });
 });
