@@ -6,7 +6,7 @@ module.exports = {
   callback: (msg) => {
     if (msg.content.length <= 7) {
       Blame.findOneRandom((err, result) => {
-        let embed = blameEmbed(msg, result.blame_reason, result.author);
+        let embed = blameEmbed(msg, result.blame_reason, result.blame_author);
       });
     } else {
       let newBlameReason = msg.content.substring(7);
