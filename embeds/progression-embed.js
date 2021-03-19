@@ -16,17 +16,17 @@ function blameEmbed(msg, data) {
       },
       {
         name: "Normal",
-        value: data.raid_progression["castle-nathria"].normal_bosses_killed,
+        value: `${data.raid_progression["castle-nathria"].normal_bosses_killed} / 10`,
         inline: true,
       },
       {
         name: "Heroic",
-        value: data.raid_progression["castle-nathria"].heroic_bosses_killed,
+        value: `${data.raid_progression["castle-nathria"].heroic_bosses_killed} / 10`,
         inline: true,
       },
       {
         name: "Mythic",
-        value: data.raid_progression["castle-nathria"].mythic_bosses_killed,
+        value: `${data.raid_progression["castle-nathria"].mythic_bosses_killed} / 10`,
         inline: true,
       }
     )
