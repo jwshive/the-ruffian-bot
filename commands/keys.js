@@ -1,12 +1,12 @@
 const Key = require("../models/Key");
+const keysEmbed = require("../embeds/keys-embed");
 
 module.exports = {
   text: "!keys",
   callback: (msg) => {
     if (msg.content.length <= 6) {
       Key.find((err, result) => {
-        console.log(`Keys: ${result}`);
-        //let embed = blameEmbed(msg, result);
+        let embed = keysEmbed(msg, result);
       });
     } else {
       let keyBits = msg.content.substring(6);
@@ -14,7 +14,8 @@ module.exports = {
       let key_instance = keyBits
         .match(/[a-z A-Z]+/g)
         .toString()
-        .trim();
+        .trim()
+        .replace(", ", "");
 
       // Check if this person already has a key, if not, new key, if so, delete then add new key.
       Key.find({ key_holder: msg.member.displayName }, (err, results) => {
