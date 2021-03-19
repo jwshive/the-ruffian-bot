@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 
-function blameEmbed(msg, data) {
+function progressionEmbed(msg, data) {
   const embed = new Discord.MessageEmbed()
     .setColor("#0099ff")
     .setTitle("The Ruffian Posse @ Raider.IO")
@@ -34,4 +34,4 @@ function blameEmbed(msg, data) {
   msg.channel.send(embed);
 }
 
-module.exports = blameEmbed;
+module.exports = progressionEmbed;
