@@ -2,7 +2,8 @@ let wowgif =
   "https://thumbs.gfycat.com/OrganicNastyAmericanriverotter-size_restricted.gif";
 const Discord = require("discord.js");
 
-function greetingEmbed(member) {
+function greetingEmbed(member, progressionData) {
+  console.log(progressionData);
   // Send the message to a designated channel on a server:
   const channel = member.guild.channels.cache.find(
     (ch) => ch.name === "public-general"
@@ -18,7 +19,7 @@ function greetingEmbed(member) {
       "https://i.pinimg.com/564x/ba/3e/4e/ba3e4e3514a74c8709c55c45b6d850b1.jpg"
     )
     .setDescription(
-      `Welcome to The Ruffian Posse Discord Server and Pleasure Palace.\nFeel free to spy on us at Raider.IO and Warcraft Logs.`
+      `Welcome to The Ruffian Posse Discord Server and Pleasure Palace.\nFeel free to spy on us at Raider.IO and Warcraft Logs.\n Our current progression is\nCastle Nathria: ${progressionData.raid_progression["castle-nathria"].summary}`
     )
     .addFields(
       {

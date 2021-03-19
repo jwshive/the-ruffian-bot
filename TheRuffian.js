@@ -37,7 +37,10 @@ bot.client.on("ready", () => {
 
 // Create an event listener for new guild members
 bot.client.on("guildMemberAdd", (member) => {
-  let embed = greetingEmbed(member);
+  const getProgression = require("./wow-api/raiderio");
+  const data = getProgression().then((data) => {
+    let embed = greetingEmbed(member, data);
+  });
 });
 
 // Mongo Stuff
