@@ -19,6 +19,6 @@
     "dotenv": "^8.2.0",
     "mongoose": "^5.12.1",
     "mongoose-simple-random": "^0.4.1",
-    "quick-chat-bot": "^0.9.1",
+    "quick-chat-bot": "^0.9.1"
   }
 }
