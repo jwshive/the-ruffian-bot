@@ -4,8 +4,6 @@ const inviteEmbed = require("../embeds/invite-embed");
 module.exports = {
   text: "!invite",
   callback: (msg) => {
-    console.log("fuck");
-    console.log(msg.channel.name);
     let channel_name = "public-general";
     if (msg.channel.name !== channel_name) {
       msg.reply("You have to run this command in #public-general");
