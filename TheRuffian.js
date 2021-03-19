@@ -4,6 +4,7 @@ const client = new Discord.Client();
 const greetingEmbed = require("./embeds/greeting-embed");
 const { QuickDiscordBot } = require("quick-chat-bot");
 const path = require("path");
+const mongoose = require("mongoose");
 let bot_token;
 let testMode;
 if (process.env.NODE_ENV === "production") {
@@ -38,3 +39,12 @@ bot.client.on("ready", () => {
 bot.client.on("guildMemberAdd", (member) => {
   let embed = greetingEmbed(member);
 });
+
+// Mongo Stuff
+mongoose
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Mongo Engaged"))
+  .catch((err) => console.log(`Mongo Error: ${err}`));
