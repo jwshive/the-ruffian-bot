@@ -13,7 +13,6 @@ function logsEmbed(msg, data) {
     )
     .setTimestamp();
   data.forEach((event) => {
-    console.log(event);
     let name = event.title;
     let link = event.id;
     embed.addField(name, `https://www.warcraftlogs.com/reports/${link}`);
