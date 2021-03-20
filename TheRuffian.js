@@ -6,14 +6,12 @@ const { QuickDiscordBot } = require("quick-chat-bot");
 const path = require("path");
 const mongoose = require("mongoose");
 let bot_token;
-let testMode;
+
 if (process.env.NODE_ENV === "production") {
   bot_token = process.env.PROD_BOT_TOKEN;
-  testMode = false;
   console.log("running with the prod token");
 } else {
   bot_token = process.env.DEV_BOT_TOKEN;
-  testMode = false;
   console.log("running with the dev token");
 }
 
@@ -22,8 +20,8 @@ const bot = new QuickDiscordBot({
   botToken: bot_token,
   commandsDir: path.join(__dirname, "commands"),
   ignoreChannels: [],
-  testMode: testMode,
-  testChannel: "secret-bot-testing",
+  testMode: false,
+  testChannel: "public-general",
   ignoreBots: true,
 });
 
