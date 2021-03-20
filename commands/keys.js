@@ -29,7 +29,6 @@ module.exports = {
             .save()
             .then((result) => {
               msg.reply("New Key Added.");
-              console.log(`Key saved. ${result}`);
             })
             .catch((err) => {
               console.log(err.code);
