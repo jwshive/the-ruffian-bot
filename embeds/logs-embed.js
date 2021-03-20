@@ -13,9 +13,13 @@ function logsEmbed(msg, data) {
     )
     .setTimestamp();
   data.forEach((event) => {
+    let readableDate = new Date(event.start).toLocaleDateString("en-US");
     let name = event.title;
     let link = event.id;
-    embed.addField(name, `https://www.warcraftlogs.com/reports/${link}`);
+    embed.addField(
+      name,
+      `https://www.warcraftlogs.com/reports/${link}\n${readableDate}`
+    );
   });
   msg.channel.send(embed);
 }
