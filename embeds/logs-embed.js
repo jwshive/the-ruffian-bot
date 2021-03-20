@@ -8,7 +8,7 @@ function logsEmbed(msg, data) {
       "https://www.warcraftlogs.com/guild/us/grizzly-hills/the%20ruffian%20posse"
     )
     .setAuthor(
-      "Last 5 Raid Nights",
+      `Last ${data.length} Raid Nights`,
       "https://i.pinimg.com/564x/ba/3e/4e/ba3e4e3514a74c8709c55c45b6d850b1.jpg"
     )
     .setTimestamp();

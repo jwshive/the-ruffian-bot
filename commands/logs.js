@@ -6,7 +6,7 @@ module.exports = {
   text: "!logs",
   callback: (msg) => {
     const log_data = getLogs().then((data) => {
-      let lastFewLogs = data.slice(0, 5);
+      let lastFewLogs = data.slice(0, 6);
       let embed = logsEmbed(msg, lastFewLogs);
     });
   },
