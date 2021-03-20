@@ -18,7 +18,6 @@ module.exports = {
         .save()
         .then((result) => {
           msg.reply("That's a new one, so creative.");
-          console.log(`Blame saved. ${result}`);
         })
         .catch((err) => {
           console.log(err.code);
