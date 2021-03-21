@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const logsEmbed = require("../embeds/logs-embed");
-const getLogs = require("../wow-api/warcraflogs");
+const getLogs = require("../apis/warcraflogs");
 
 module.exports = {
   text: "!logs",

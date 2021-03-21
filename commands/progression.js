@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const progressionEmbed = require("../embeds/progression-embed");
-const getProgression = require("../wow-api/raiderio");
+const getProgression = require("../apis/raiderio");
 
 module.exports = {
   text: "!progression",
