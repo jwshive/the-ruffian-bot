@@ -16,7 +16,7 @@ function helpEmbed(msg, data) {
       inline: true,
     });
   });
-  msg.channel.send(embed);
+  msg.author.send(embed);
 }
 
 module.exports = helpEmbed;

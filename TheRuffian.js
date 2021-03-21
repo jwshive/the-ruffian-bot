@@ -30,7 +30,7 @@ bot.connect();
 
 // Get this bread
 bot.client.on("ready", () => {
-  bot.client.user.setActivity("Dreams Shatter", { type: "WATCHING" });
+  bot.client.user.setActivity("!help requests", { type: "LISTENING" });
 });
 
 // Create an event listener for new guild members
