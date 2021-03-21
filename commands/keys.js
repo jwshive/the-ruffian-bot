@@ -42,6 +42,7 @@ module.exports = {
               console.log(`Key Save Error: ${err}`);
             });
         } else {
+          msg.delete();
           const filter = {
             key_holder: msg.member.displayName,
           };
