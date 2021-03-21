@@ -7,6 +7,7 @@ module.exports = {
   usage:
     "!keys - lists the tracked keys for the week.\n!keys <instance> <number> - saves your key to the database. Additional uses will update your key when it changes. Instance and Number can be in any order.",
   callback: (msg) => {
+    msg.delete();
     if (msg.content.length <= 6) {
       Key.find((err, result) => {
         let embed = keysEmbed(msg, result);

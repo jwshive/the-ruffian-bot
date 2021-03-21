@@ -7,6 +7,7 @@ module.exports = {
   usage:
     "!help - Show the registered commands, a description and short usage example.",
   callback: (msg) => {
+    msg.delete();
     const commands = [];
     try {
       const commandFiles = fs.readdirSync(__dirname);

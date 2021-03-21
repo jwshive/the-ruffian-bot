@@ -9,6 +9,7 @@ module.exports = {
   description: "Gets the last few weeks of guild logs.",
   usage: "!logs - displays the last few guild logs.",
   callback: (msg) => {
+    msg.delete();
     const log_data = getLogs(url).then((data) => {
       let lastFewLogs = data.slice(0, 6);
       let embed = logsEmbed(msg, lastFewLogs);

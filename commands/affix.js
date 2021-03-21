@@ -8,6 +8,7 @@ module.exports = {
   description: "Get Weekly Affixes",
   usage: "!affix - lists weekly affixes.",
   callback: (msg) => {
+    msg.delete();
     const dadJoke = getAffixes(url).then((data) => {
       let embed = affixEmbed(msg, data);
     });
