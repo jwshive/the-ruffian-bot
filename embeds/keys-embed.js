@@ -17,7 +17,7 @@ function keysEmbed(msg, keyData) {
     keyData.forEach((key) => {
       let key_holder = key.key_holder;
       let instance = `${key.key_instance} level ${key.key_level}`;
-      embed.addField(key_holder, instance);
+      embed.addField(instance, key_holder);
     });
   }
 
