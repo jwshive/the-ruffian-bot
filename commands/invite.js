@@ -3,6 +3,9 @@ const inviteEmbed = require("../embeds/invite-embed");
 
 module.exports = {
   text: "!invite",
+  description:
+    "Generate an invite link to the discord server. Must be used in the #public-general channel.",
+  usage: "!invite - prints an invite link to the #public-general channel.",
   callback: (msg) => {
     let channel_name = "public-general";
     if (msg.channel.name !== channel_name) {

@@ -3,6 +3,9 @@ const keysEmbed = require("../embeds/keys-embed");
 
 module.exports = {
   text: "!keys",
+  description: "Lists or Adds tracked guild Mythic+ Keys.",
+  usage:
+    "!keys - lists the tracked keys for the week.\n!keys <instance> <number> - saves your key to the database. Additional uses will update your key when it changes. Instance and Number can be in any order.",
   callback: (msg) => {
     if (msg.content.length <= 6) {
       Key.find((err, result) => {

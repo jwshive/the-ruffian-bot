@@ -3,6 +3,9 @@ const blameEmbed = require("../embeds/blame-embed");
 
 module.exports = {
   text: "!blame",
+  description: "Get or Create a random reason for your failings.",
+  usage:
+    "!blame - gets a random excuse from the database.\n!blame <text> will add your pitiful excuse to the database.",
   callback: (msg) => {
     if (msg.content.length <= 7) {
       Blame.findOneRandom((err, result) => {
