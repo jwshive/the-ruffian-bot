@@ -4,7 +4,7 @@ function blameEmbed(msg, blame, author) {
   const embed = new Discord.MessageEmbed()
     .setColor("#0099ff")
     .setAuthor(
-      `"Artisanal Failure Excuses - Finely crafted bullshit mistakes."`,
+      `Artisanal Failure Excuses - Crafted for ${msg.member.displayName}.`,
       "https://i.pinimg.com/564x/ba/3e/4e/ba3e4e3514a74c8709c55c45b6d850b1.jpg"
     )
     .setTitle(`:bell: ${blame} :bell: --${author}`)
