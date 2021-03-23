@@ -7,7 +7,11 @@ module.exports = {
   usage:
     "!blame - gets a random excuse from the database.\n!blame <text> will add your pitiful excuse to the database.",
   callback: (msg) => {
-    msg.delete();
+    try {
+      msg.delete();
+    } catch (err) {
+      console.log(`Error Deleting Message: ${err}`);
+    }
     if (msg.content.length <= 7) {
       Blame.findOneRandom((err, result) => {
         let embed = blameEmbed(msg, result.blame_reason, result.blame_author);
