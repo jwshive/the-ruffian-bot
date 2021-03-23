@@ -10,6 +10,7 @@ module.exports = {
     msg.delete();
     if (msg.content.length <= 6) {
       Key.find((err, result) => {
+        if (err) throw err;
         let embed = keysEmbed(msg, result);
       });
     } else {
@@ -35,7 +36,7 @@ module.exports = {
               msg.reply("New Key Added.");
             })
             .catch((err) => {
-              console.log(err.code);
+              console.log(`Error caught in keys.js command: ${err.code}`);
               if (err.code === 11000) {
                 msg.reply("You've already recorded your key.");
               }
@@ -50,7 +51,7 @@ module.exports = {
             key_level: key_level,
             key_instance: key_instance,
           };
-          Key.findOneAndUpdate(filter, update, { new: true }, (result) => {
+          Key.findOneAndUpdate(filter, update, { new: true }, () => {
             msg.reply("I've updated your key, thanks!");
           });
         }
