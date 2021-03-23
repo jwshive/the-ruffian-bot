@@ -8,7 +8,11 @@ module.exports = {
   description: "Get Weekly Affixes",
   usage: "!affix - lists weekly affixes.",
   callback: (msg) => {
-    msg.delete();
+    try {
+      msg.delete();
+    } catch (err) {
+      console.log(`Error Deleting Message: ${err}`);
+    }
     const dadJoke = getAffixes(url).then((data) => {
       let embed = affixEmbed(msg, data);
     });

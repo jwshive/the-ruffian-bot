@@ -9,7 +9,11 @@ module.exports = {
   description: "Shows current guild progression.",
   usage: "!progression - displays current guild progression.",
   callback: (msg) => {
-    msg.delete();
+    try {
+      msg.delete();
+    } catch (err) {
+      console.log(`Error Deleting Message: ${err}`);
+    }
     const progression_data = getProgression(url).then((data) => {
       let embed = progressionEmbed(msg, data);
     });

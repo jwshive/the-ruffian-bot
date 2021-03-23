@@ -8,7 +8,11 @@ module.exports = {
   description: "Random Dad Joke",
   usage: "!joke - Get hit with the best Dad Joke you've ever heard.",
   callback: (msg) => {
-    msg.delete();
+    try {
+      msg.delete();
+    } catch (err) {
+      console.log(`Error Deleting Message: ${err}`);
+    }
     const dadJoke = getDadJoke(url, true)
       .then((data) => {
         let embed = jokeEmbed(msg, data);

@@ -7,7 +7,11 @@ module.exports = {
   description: "Random Chuck Norris Facts",
   usage: "!chuck - Blessed with a Chuck Fact.",
   callback: (msg) => {
-    msg.delete();
+    try {
+      msg.delete();
+    } catch (err) {
+      console.log(`Error Deleting Message: ${err}`);
+    }
     const chuckFact = getChuckFact(url).then((data) => {
       let embed = chuckEmbed(msg, data);
     });
