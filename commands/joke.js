@@ -9,8 +9,10 @@ module.exports = {
   usage: "!joke - Get hit with the best Dad Joke you've ever heard.",
   callback: (msg) => {
     msg.delete();
-    const dadJoke = getDadJoke(url, true).then((data) => {
-      let embed = jokeEmbed(msg, data);
-    });
+    const dadJoke = getDadJoke(url, true)
+      .then((data) => {
+        let embed = jokeEmbed(msg, data);
+      })
+      .catch((err) => console.log(err));
   },
 };
