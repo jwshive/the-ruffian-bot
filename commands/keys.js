@@ -7,11 +7,6 @@ module.exports = {
   usage:
     "!keys - lists the tracked keys for the week.\n!keys <instance> <number> - saves your key to the database. Additional uses will update your key when it changes. Instance and Number can be in any order.",
   callback: (msg) => {
-    try {
-      msg.delete();
-    } catch (err) {
-      console.log(`Error Deleting Message: ${err}`);
-    }
     if (msg.content.length <= 6) {
       Key.find((err, result) => {
         if (err) throw err;
@@ -47,11 +42,6 @@ module.exports = {
               console.log(`Key Save Error: ${err}`);
             });
         } else {
-          try {
-            msg.delete();
-          } catch (err) {
-            console.log(`Error Deleting Message: ${err}`);
-          }
           const filter = {
             key_holder: msg.member.displayName,
           };
