@@ -60,4 +60,4 @@ const clearKeys = require("./cron/remove-keys");
 // Send reminder on Tuesday/Thursday about raid.
 const raidReminder = require("./cron/raid-reminder")(bot);
 // Send reminder on Monday for Officers Meeting.
-const officerMeetingReminder = require("./cron/officer-meeting-reminder");
+const officerMeetingReminder = require("./cron/officer-meeting-reminder")(bot);
