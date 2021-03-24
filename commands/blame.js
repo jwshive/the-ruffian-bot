@@ -1,33 +1,6 @@
 const Blame = require("../models/Blame");
 const blameEmbed = require("../embeds/blame-embed");
-const fs = require("fs");
-
-async function play(voiceChannel, msg) {
-  try {
-    if (
-      process.env.SHAME_MP3 &&
-      fs.existsSync(`./sounds/${process.env.SHAME_MP3}`)
-    ) {
-      let SHAME_MP3 = process.env.SHAME_MP3;
-      const connection = await voiceChannel.join();
-      const dispatcher = connection.play(`./sounds/${SHAME_MP3}`, {
-        volume: 0.5,
-      });
-      dispatcher.on("start", () => {
-        console.log(`Playing ${SHAME_MP3}`);
-      });
-      dispatcher.on("finish", () => {
-        console.log(`Finished playing ${SHAME_MP3}`);
-        voiceChannel.leave();
-      });
-      dispatcher.on("error", console.error);
-    } else {
-      console.error("Can't find the MP3");
-    }
-  } catch (err) {
-    console.error(err);
-  }
-}
+const playAudio = require("../utils/play_audio");
 
 module.exports = {
   text: "!blame",
@@ -44,7 +17,7 @@ module.exports = {
           console.log("User was not in a voice channel.");
         } else {
           // Let's try to join the channel and play the sound.
-          play(msg.member.voice.channel, msg);
+          playAudio(msg, process.env.SHAME_MP3);
         }
       });
     } else {
