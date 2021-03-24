@@ -3,7 +3,7 @@ const blameEmbed = require("../embeds/blame-embed");
 
 async function play(voiceChannel, mp3File) {
   const connection = await voiceChannel.join();
-  const dispatcher = connection.play(mp3File, { volume: 0.75 });
+  const dispatcher = connection.play(mp3File, { volume: 0.5 });
   dispatcher.on("start", () => {
     console.log(`Playing ${mp3File}`);
   });
@@ -25,6 +25,7 @@ module.exports = {
         let embed = blameEmbed(msg, result.blame_reason, result.blame_author);
 
         if (!msg.member.voice.channel) {
+          msg.reply("Join a voice channel for the full shame experience.");
           console.log("User was not in a voice channel.");
         } else {
           // Let's try to join the channel and play the sound.
