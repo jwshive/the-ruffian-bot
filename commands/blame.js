@@ -1,17 +1,31 @@
 const Blame = require("../models/Blame");
 const blameEmbed = require("../embeds/blame-embed");
+const fs = require("fs");
 
-async function play(voiceChannel, mp3File) {
-  const connection = await voiceChannel.join();
-  const dispatcher = connection.play(mp3File, { volume: 0.5 });
-  dispatcher.on("start", () => {
-    console.log(`Playing ${mp3File}`);
-  });
-  dispatcher.on("finish", () => {
-    console.log(`Finished playing ${mp3File}`);
-    voiceChannel.leave();
-  });
-  dispatcher.on("error", console.error);
+async function play(voiceChannel, msg) {
+  try {
+    if (
+      process.env.SHAME_MP3 &&
+      fs.existsSync(`./sounds/${process.env.SHAME_MP3}`)
+    ) {
+      let SHAME_MP3 = process.env.SHAME_MP3;
+      const connection = await voiceChannel.join();
+      const dispatcher = connection.play(`./sounds/${SHAME_MP3}`, {
+        volume: 0.5,
+      });
+      dispatcher.on("start", () => {
+        console.log(`Playing ${SHAME_MP3}`);
+      });
+      dispatcher.on("finish", () => {
+        console.log(`Finished playing ${SHAME_MP3}`);
+        voiceChannel.leave();
+      });
+      dispatcher.on("error", console.error);
+    }
+  } catch (err) {
+    msg.reply(`I cannae find the shame mp3: ${process.env.SHAME_MP3}`);
+    console.error(err);
+  }
 }
 
 module.exports = {
@@ -29,7 +43,7 @@ module.exports = {
           console.log("User was not in a voice channel.");
         } else {
           // Let's try to join the channel and play the sound.
-          play(msg.member.voice.channel, "./sounds/shame-1.mp3");
+          play(msg.member.voice.channel, msg);
         }
       });
     } else {
