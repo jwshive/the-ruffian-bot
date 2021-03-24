@@ -35,6 +35,23 @@ bot.client.on("ready", () => {
 
 // Create an event listener for new guild members
 bot.client.on("guildMemberAdd", (member) => {
+  // Log User to Mongo Table
+  const Guest = require("./models/Guest");
+  const guest = new Guest({
+    guest_discord_id: member.user.id,
+    guest_discord_username: member.user.username,
+    guest_discord_discriminator: member.user.discriminator,
+    joined_timestamp: member.joinedTimestamp,
+  });
+  guest
+    .save()
+    .then((result) => {
+      console.info(`Saved new guest ${result}`);
+    })
+    .catch((err) => {
+      console.log(err.code);
+      console.log(`Guest Save Error: ${err}`);
+    });
   const url =
     "https://raider.io/api/v1/guilds/profile?region=us&realm=grizzly-hills&name=the%20ruffian%20posse&fields=raid_progression";
   const getProgression = require("./apis/apiRequest");
