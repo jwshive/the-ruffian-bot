@@ -21,9 +21,10 @@ async function play(voiceChannel, msg) {
         voiceChannel.leave();
       });
       dispatcher.on("error", console.error);
+    } else {
+      console.error("Can't find the MP3");
     }
   } catch (err) {
-    msg.reply(`I cannae find the shame mp3: ${process.env.SHAME_MP3}`);
     console.error(err);
   }
 }
