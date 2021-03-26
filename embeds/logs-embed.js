@@ -17,7 +17,7 @@ function logsEmbed(msg, data) {
     let name = event.title;
     let link = event.id;
     embed.addField(
-      name,
+      `${name} [${link}],
       `https://www.warcraftlogs.com/reports/${link}\n${readableDate}`
     );
   });
