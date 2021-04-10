@@ -36,8 +36,7 @@ bot.client.on("ready", () => {
 // Create an event listener for new guild members
 bot.client.on("guildMemberAdd", (member) => {
   const logGuest = require("./utils/log_new_member")(member);
-  const url =
-    "https://raider.io/api/v1/guilds/profile?region=us&realm=grizzly-hills&name=the%20ruffian%20posse&fields=raid_progression";
+  const url = `${process.env.RAIDERIO_URL}&fields=raid_progression`;
   const getProgression = require("./apis/apiRequest");
   const data = getProgression(url).then((data) => {
     let embed = greetingEmbed(member, data);
