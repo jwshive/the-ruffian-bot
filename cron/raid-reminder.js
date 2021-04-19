@@ -7,7 +7,6 @@ function sendReminder(bot) {
       (channel) => channel.name === "guild-general"
     );
     let embed = raidReminderEmbed(bot, channel)();
-    console.log(embed);
   });
 }
 

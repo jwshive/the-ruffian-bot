@@ -11,6 +11,7 @@ function officerMeetingReminderEmbed(bot, channel) {
       `${bot.client.user.username}`,
       "https://i.pinimg.com/564x/ba/3e/4e/ba3e4e3514a74c8709c55c45b6d850b1.jpg"
     )
+    .addFields({ name: "Who?", value: "<@&295372971927928832>" })
     .addFields({ name: "What Time?", value: "7:30PM" })
     .setTimestamp()
     .setFooter("Early is on-time, on-time is late.");
