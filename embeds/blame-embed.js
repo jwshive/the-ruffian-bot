@@ -12,7 +12,13 @@ function blameEmbed(msg, blame, author) {
       .setImage("https://media2.giphy.com/media/vX9WcCiWwUF7G/200.gif")
       .setTimestamp()
       .setFooter("Hey buddy, next time, just don't be so bad.");
-    msg.channel.send(embed);
+    try {
+      msg.channel.send(embed);
+    } catch (error) {
+      msg.author.send(
+        "I don't have permission to reply in that channel, roll for blame in the #guild-general channel."
+      );
+    }
   } catch (err) {
     console.log(`Error on blame embed: ${err}`);
   }
