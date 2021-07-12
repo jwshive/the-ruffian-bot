@@ -1,6 +1,9 @@
 const Discord = require("discord.js");
 
 function officerMeetingReminderEmbed(bot, channel) {
+
+  channel.send(`<@&295372527876964353> <@&295372971927928832>`);
+
   const embed = new Discord.MessageEmbed()
     .setColor("#0099ff")
     .setTitle("Officer Meeting Reminder")

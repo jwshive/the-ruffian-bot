@@ -1,6 +1,9 @@
 const Discord = require("discord.js");
 
 function raidReminderEmbed(bot, channel) {
+
+  channel.send(`<@&295373337268584458> <@&295372971927928832> <@&295372527876964353>`);
+  
   const embed = new Discord.MessageEmbed()
     .setColor("#0099ff")
     .setTitle("Raid Reminder")
