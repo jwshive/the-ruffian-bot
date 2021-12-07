@@ -22,8 +22,6 @@ jobs:
           envkey_WCL_URL: ${{ secrets.WCL_URL }}
           envkey_RAIDERIO_URL: ${{ secrets.RAIDERIO_URL }}
           file_name: .env
-      - name: Content list
-        uses: enricomarino/actions@v2
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v1
       - name: Login to Dockerhub
