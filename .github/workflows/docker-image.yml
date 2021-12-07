@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Make Envfile
-        uses: SpicyPizza/create-envfile@v1
+        uses: SpicyPizza/create-envfile@v1.2
         with:
           envkey_PROD_BOT_TOKEN: ${{ secrets.PROD_BOT_TOKEN }}
           envkey_MONGO_URL: ${{ secrets.MONGO_URL }}
