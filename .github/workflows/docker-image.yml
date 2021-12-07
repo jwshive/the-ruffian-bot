@@ -21,6 +21,7 @@ jobs:
           envkey_SHAME_MP3: ${{ secrets.SHAME_MP3 }}
           envkey_WCL_URL: ${{ secrets.WCL_URL }}
           envkey_RAIDERIO_URL: ${{ secrets.RAIDERIO_URL }}
+          directory: .
           file_name: .env
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v1
