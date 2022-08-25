@@ -10,7 +10,6 @@ module.exports = {
   callback: (msg) => {
     const dadJoke = getDadJoke(url, true)
       .then((data) => {
-        console.log(data);
         let embed = jokeEmbed(msg, data, "Dad");
       })
       .catch((err) => console.log(err));

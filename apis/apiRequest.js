@@ -4,7 +4,7 @@ const makeApiRequest = async (url, json = false) => {
   try {
     if (json) {
       const resp = await axios
-        .get(url, { headers: { Accept: "application/json" } })
+        .get(url, { headers: { Accept: "application/json", "User-Agent": "axios 0.21.1" } })
         .then(function (response) {
           return response.data;
         });
