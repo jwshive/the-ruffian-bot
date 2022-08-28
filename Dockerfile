@@ -4,15 +4,9 @@ WORKDIR /the-ruffian-bot
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install && mv /etc/localtime /etc/localtime.bkup && ln -s /usr/share/zoneinfo/America/Indiana/Indianapolis /etc/localtime
 
-RUN mv /etc/localtime /etc/localtime.bkup
-
-RUN ln -s /usr/share/zoneinfo/America/Indiana/Indianapolis /etc/localtime
-
-RUN echo "America/Indiana/Indianapolis" > /etc/timezone
-
-RUN dpkg-reconfigure -f noninteractive tzdata
+RUN echo "America/Indiana/Indianapolis" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 
 COPY . .
 
