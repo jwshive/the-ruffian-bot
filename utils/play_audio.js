@@ -3,16 +3,15 @@ const fs = require("fs");
 async function play(msg, audioFile) {
   try {
     if (fs.existsSync(`./sounds/${audioFile}`)) {
-      let SHAME_MP3 = audioFile;
       const connection = await msg.member.voice.channel.join();
-      const dispatcher = connection.play(`./sounds/${SHAME_MP3}`, {
+      const dispatcher = connection.play(`./sounds/${audioFile}`, {
         volume: 0.5,
       });
       dispatcher.on("start", () => {
-        console.log(`Playing ${SHAME_MP3}`);
+        console.log(`Playing ${audioFile}`);
       });
       dispatcher.on("finish", () => {
-        console.log(`Finished playing ${SHAME_MP3}`);
+        console.log(`Finished playing ${audioFile}`);
         msg.member.voice.channel.leave();
       });
       dispatcher.on("error", console.error);
