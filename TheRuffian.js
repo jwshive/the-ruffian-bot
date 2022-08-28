@@ -1,19 +1,10 @@
-require("dotenv").config();
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const greetingEmbed = require("./embeds/greeting-embed");
 const { QuickDiscordBot } = require("quick-chat-bot");
 const path = require("path");
 const mongoose = require("mongoose");
-let bot_token;
-
-if (process.env.NODE_ENV === "production") {
-  bot_token = process.env.PROD_BOT_TOKEN;
-  console.log("running with the prod token");
-} else {
-  bot_token = process.env.DEV_BOT_TOKEN;
-  console.log("running with the dev token");
-}
+let bot_token = process.env.BOT_TOKEN;
 
 // Setup the Bot
 const bot = new QuickDiscordBot({
