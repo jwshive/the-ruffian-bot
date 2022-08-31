@@ -17,7 +17,7 @@ module.exports = {
           console.log("User was not in a voice channel.");
         } else {
           // Let's try to join the channel and play the sound.
-          playAudio(msg, "shame-1.mp3").catch((err, msg) =>
+          playAudio(msg, "shame.mp3").catch((err, msg) =>
             msg.author.send(
               "I can't write to that channel, roll for blame in #guild-general."
             )
