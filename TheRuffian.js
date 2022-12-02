@@ -27,11 +27,11 @@ bot.client.on("ready", () => {
 // Create an event listener for new guild members
 bot.client.on("guildMemberAdd", (member) => {
   const logGuest = require("./utils/log_new_member")(member);
-  #const url = `${process.env.RAIDERIO_URL}&fields=raid_progression`;
-  #const getProgression = require("./apis/apiRequest");
-  #const data = getProgression(url).then((data) => {
-  #  let embed = greetingEmbed(member, data);
-  #});
+  //const url = `${process.env.RAIDERIO_URL}&fields=raid_progression`;
+  //const getProgression = require("./apis/apiRequest");
+  //const data = getProgression(url).then((data) => {
+  //  let embed = greetingEmbed(member, data);
+  //});
 });
 
 // Mongo Stuff
