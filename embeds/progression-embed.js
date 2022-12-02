@@ -16,17 +16,17 @@ function progressionEmbed(msg, data) {
       },
       {
         name: "Normal",
-        value: `${data.raid_progression["vault-of-the-incarnates"].normal_bosses_killed} / 8`,
+        value: `${data.raid_progression["vault-of-the-incarnates"].normal_bosses_killed} / ${data.raid_progression["vault-of-the-incarnates"].total_bosses}`,
         inline: true,
       },
       {
         name: "Heroic",
-        value: `${data.raid_progression["vault-of-the-incarnates"].heroic_bosses_killed} / 8`,
+        value: `${data.raid_progression["vault-of-the-incarnates"].heroic_bosses_killed} / ${data.raid_progression["vault-of-the-incarnates"].total_bosses}`,
         inline: true,
       },
       {
         name: "Mythic",
-        value: `${data.raid_progression["vault-of-the-incarnates"].mythic_bosses_killed} / 8`,
+        value: `${data.raid_progression["vault-of-the-incarnates"].mythic_bosses_killed} / ${data.raid_progression["vault-of-the-incarnates"].total_bosses}`,
         inline: true,
       }
     )
