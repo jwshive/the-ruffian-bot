@@ -12,7 +12,7 @@ function progressionEmbed(msg, data) {
     .addFields(
       {
         name: "Vault of the Incarnates",
-        #value: data.raid_progression["vault-of-the-incarnates"].summary,
+        value: data.raid_progression["vault-of-the-incarnates"].summary,
       }
     )
     .setTimestamp();
