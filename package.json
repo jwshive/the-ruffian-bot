@@ -15,13 +15,13 @@
     "nodemon": "^2.0.15"
   },
   "dependencies": {
-    "@discordjs/opus": "0.7.0",
+    "@discordjs/opus": "^0.9.0",
     "axios": "^0.24.0",
     "ffmpeg-static": "^4.4.0",
     "glob": "^7.2.0",
     "mongoose": "^6.0.13",
     "mongoose-simple-random": "^0.4.1",
     "node-cron": "^3.0.0",
-    "quick-chat-bot": "^0.9.1"
+    "quick-chat-bot": "github:jwshive/Quick-Chat-Bot"
   }
 }
