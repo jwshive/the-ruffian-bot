@@ -18,7 +18,7 @@ function greetingEmbed(member, progressionData) {
       "https://i.pinimg.com/564x/ba/3e/4e/ba3e4e3514a74c8709c55c45b6d850b1.jpg"
     )
     .setDescription(
-      `Welcome to The Ruffian Posse Discord Server and Pleasure Palace.\nFeel free to spy on us at Raider.IO and Warcraft Logs.\n Our current progression is\nFated Sepulcher of the First Ones: ${progressionData.raid_progression["fated-sepulcher-of-the-first-ones"].summary}\nFated Sanctum of Domination: ${progressionData.raid_progression["fated-sanctum-of-domination"].summary}\nFated Castle Nathria: ${progressionData.raid_progression["fated-castle-nathria"].summary}\nSepulcher of the First Ones: ${progressionData.raid_progression["sepulcher-of-the-first-ones"].summary}\nSanctum of Domination: ${progressionData.raid_progression["sanctum-of-domination"].summary}\nCastle Nathria: ${progressionData.raid_progression["castle-nathria"].summary}`
+      `Welcome to The Ruffian Posse Discord Server and Pleasure Palace.\nFeel free to spy on us at Raider.IO and Warcraft Logs.\n Our current progression is\nVault of the Incarnates: ${progressionData.raid_progression["vault-of-the-incarnates"].summary}`
     )
     .addFields(
       {
