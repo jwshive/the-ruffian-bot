@@ -12,23 +12,8 @@ const messageHandler = new DiscordMessageHandler({ commandsDir: path.join(__dirn
 
 bot.on('ready', () => {
     console.log('Connected to Discord');
-    if (this.testMode && this.testChannel) {
-        console.log(
-            `***RUNNING IN TEST MODE*** and only listening to channel ${this.config.testChannel}`
-        );
-    }
-    if (this.ignoreChannels) {
-        console.log(
-            `Ignoring the following channels`,
-            this.config.ignoreChannels
-        );
-    }
-
-    if (!this.showLiveMessages) {
-        console.log(`Live server messages will be suppressed.`);
-    }
 });
-bot.on('message', messageHandler.handleMessage);
+bot.on('message', DiscordMessageHandler.handleMessage);
 bot.login(bot_token);
 
 // Get this bread
