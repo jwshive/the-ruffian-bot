@@ -1,26 +1,28 @@
-const fs = require("fs");
+const { createAudioPlayer, joinVoiceChannel, VoiceConnectionStatus, createAudioResource, AudioPlayerStatus } = require('@discordjs/voice');
 
-async function play(msg, audioFile) {
-  try {
-    if (fs.existsSync(`./sounds/${audioFile}`)) {
-      const connection = await msg.member.voice.channel.join();
-      const dispatcher = connection.play(`./sounds/${audioFile}`, {
-        volume: 0.5,
-      });
-      dispatcher.on("start", () => {
+const audioPlayer = createAudioPlayer();
+
+function playMusic(message, audioFile) {
+    const channelOfFollowedMember = message.member.voice.channel
+    if(!channelOfFollowedMember){ return }
+    voiceConnection = joinVoiceChannel({
+        channelId: channelOfFollowedMember.id,
+        guildId: String(channelOfFollowedMember.guild.id),
+        adapterCreator: channelOfFollowedMember.guild.voiceAdapterCreator,
+        selfDeaf: false,
+        selfMute: false
+    })
+    voiceConnection?.on(VoiceConnectionStatus.Ready, (oldState, newState) => {
         console.log(`Playing ${audioFile}`);
-      });
-      dispatcher.on("finish", () => {
-        console.log(`Finished playing ${audioFile}`);
-        msg.member.voice.channel.leave();
-      });
-      dispatcher.on("error", console.error);
-    } else {
-      console.error(`AudioFile did not exist ./sounds/${audioFile}`);
-    }
-  } catch (err) {
-    console.error(err);
-  }
-}
+        if(voiceConnection) {
+            const resource = createAudioResource(`./sounds/${audioFile}`, { inlineVolume: true });
+            resource.volume.setVolume(0.5);
+            const subscription = voiceConnection.subscribe(audioPlayer);
+            audioPlayer.play(resource);
 
-module.exports = play;
+            audioPlayer.on(AudioPlayerStatus.Idle, () => {voiceConnection.disconnect()})
+        }
+    });
+};
+
+module.exports = playMusic;

@@ -1,31 +1,28 @@
-const Discord = require("discord.js");
-const client = new Discord.Client();
+const { Client, Intents, GatewayIntentBits, Discord } = require('discord.js');
 const greetingEmbed = require("./embeds/greeting-embed");
-const { QuickDiscordBot } = require("quick-chat-bot");
+const DiscordMessageHandler = require('./DiscordMessageHandler');
 const path = require("path");
 const mongoose = require("mongoose");
+require('dotenv').config();
 let bot_token = process.env.BOT_TOKEN;
-
-// Setup the Bot
-const bot = new QuickDiscordBot({
-  botToken: bot_token,
-  commandsDir: path.join(__dirname, "commands"),
-  ignoreChannels: [],
-  testMode: false,
-  testChannel: "public-general",
-  ignoreBots: true,
-});
+const bot = new Client( {intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildVoiceStates] } );
 
 // Start the bot
-bot.connect();
+const messageHandler = new DiscordMessageHandler({ commandsDir: path.join(__dirname, "commands"), testChannel: "public-general", testMode: false, botToken: bot_token, ignoreChannels: [], showLiveMessages: true });
+
+bot.on('ready', () => {
+    console.log('Connected to Discord');
+});
+bot.on('messageCreate', messageHandler.handleMessage);
+bot.login(bot_token);
 
 // Get this bread
-bot.client.on("ready", () => {
-  bot.client.user.setActivity("!help", { type: "LISTENING" });
+bot.on("ready", () => {
+  bot.user.setActivity("!help", { type: "LISTENING" });
 });
 
 // Create an event listener for new guild members
-bot.client.on("guildMemberAdd", (member) => {
+bot.on("guildMemberAdd", (member) => {
   const logGuest = require("./utils/log_new_member")(member);
   const url = `${process.env.RAIDERIO_URL}&fields=raid_progression`;
   const getProgression = require("./apis/apiRequest");
@@ -35,6 +32,7 @@ bot.client.on("guildMemberAdd", (member) => {
 });
 
 // Mongo Stuff
+mongoose.set('strictQuery', false);
 mongoose
   .connect(process.env.MONGO_URL, {
     //useNewUrlParser: true,

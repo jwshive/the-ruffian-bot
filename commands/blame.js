@@ -11,18 +11,7 @@ module.exports = {
     if (msg.content.length <= 7) {
       Blame.findOneRandom((err, result) => {
         let embed = blameEmbed(msg, result.blame_reason, result.blame_author);
-
-        if (!msg.member.voice.channel) {
-          msg.reply("Join a voice channel for the full shame experience.");
-          console.log("User was not in a voice channel.");
-        } else {
-          // Let's try to join the channel and play the sound.
-          playAudio(msg, "shame.mp3").catch((err, msg) =>
-            msg.author.send(
-              "I can't write to that channel, roll for blame in #guild-general."
-            )
-          );
-        }
+          playAudio(msg, "shame.mp3")
       });
     } else {
       let newBlameReason = msg.content.substring(7);
