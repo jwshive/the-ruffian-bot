@@ -1,6 +1,6 @@
 let wowgif =
   "https://thumbs.gfycat.com/OrganicNastyAmericanriverotter-size_restricted.gif";
-const Discord = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 function greetingEmbed(member, progressionData) {
   // Send the message to a designated channel on a server:
@@ -9,14 +9,9 @@ function greetingEmbed(member, progressionData) {
   );
   if (!channel) return;
 
-  const embed = new Discord.MessageEmbed()
-    .setTitle(
-      `Welcome, ${member.user.username}, to The Ruffian Posse - Grizzly Hills`
-    )
-    .setAuthor(
-      member.client.user.username,
-      "https://i.pinimg.com/564x/ba/3e/4e/ba3e4e3514a74c8709c55c45b6d850b1.jpg"
-    )
+  const embed = new EmbedBuilder()
+    .setTitle(`Welcome, ${member.user.username}, to The Ruffian Posse - Grizzly Hills`)
+    .setAuthor({name: member.client.user.username, iconURL: 'https://i.pinimg.com/564x/ba/3e/4e/ba3e4e3514a74c8709c55c45b6d850b1.jpg'})
     .setDescription(
       `Welcome to The Ruffian Posse Discord Server and Pleasure Palace.\nFeel free to spy on us at Raider.IO and Warcraft Logs.\n Our current progression is\nVault of the Incarnates: ${progressionData.raid_progression["vault-of-the-incarnates"].summary}`
     )
@@ -35,7 +30,7 @@ function greetingEmbed(member, progressionData) {
     )
     .setImage(wowgif)
     .setTimestamp()
-    .setFooter("Please enjoy your stay, unless you aren't into that.");
+    .setFooter({text: "Please enjoy your stay, unless you aren't into that."});
   // Try to set their role to guests and pugs
   let role = member.guild.roles.cache.find(
     (role) => role.name === "Guests and Pugs"
@@ -43,7 +38,7 @@ function greetingEmbed(member, progressionData) {
   role
     ? member.roles.add(role)
     : console.log(`Could not add ${role} to ${member.client.user.username}`);
-  channel.send(embed);
+  channel.send({ embeds: [embed] });
 }
 
 module.exports = greetingEmbed;
