@@ -1,11 +1,11 @@
-const { Client, Intents, GatewayIntentBits } = require('discord.js');
+const { Client, Intents, GatewayIntentBits, Discord } = require('discord.js');
 const greetingEmbed = require("./embeds/greeting-embed");
 const DiscordMessageHandler = require('./DiscordMessageHandler');
 const path = require("path");
 const mongoose = require("mongoose");
 require('dotenv').config();
 let bot_token = process.env.BOT_TOKEN;
-const bot = new Client( {intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers] } );
+const bot = new Client( {intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildVoiceStates] } );
 
 // Start the bot
 const messageHandler = new DiscordMessageHandler({ commandsDir: path.join(__dirname, "commands"), testChannel: "public-general", testMode: false, botToken: bot_token, ignoreChannels: [], showLiveMessages: true });

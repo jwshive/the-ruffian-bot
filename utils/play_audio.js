@@ -1,34 +1,28 @@
-const fs = require("fs");
-const { joinVoiceChannel, createAudioPlayer, createAudioResource, AudioPlayerStatus, entersState, StreamType, VoiceConnectionStatus } = require('@discordjs/voice');
+const { createAudioPlayer, joinVoiceChannel, VoiceConnectionStatus, createAudioResource, AudioPlayerStatus } = require('@discordjs/voice');
 
-async function play(msg, audioFile) {
-  try {
-    if (fs.existsSync(`./sounds/${audioFile}`)) {
-    await playSound(`./sounds/${audioFile}`);
-    const connection = await connectToChannel(msg.member.voice.channel)
-    } else {
-      console.error(`AudioFile did not exist ./sounds/${audioFile}`);
-    }
-  } catch (err) {
-    console.error(err);
-  }
-}
+const audioPlayer = createAudioPlayer();
 
-function playSound(audioFile, player) {
-    const player = createAudioPlayer();
-    const resource = createAudioResource(`./sounds/${audioFile}`, {
-		inputType: StreamType.Arbitrary,
-	});
-	player.play(resource);
-	return entersState(player, AudioPlayerStatus.Playing, 5e3);
-}
+function playMusic(message, audioFile) {
+    const channelOfFollowedMember = message.member.voice.channel
+    if(!channelOfFollowedMember){ return }
+    voiceConnection = joinVoiceChannel({
+        channelId: channelOfFollowedMember.id,
+        guildId: String(channelOfFollowedMember.guild.id),
+        adapterCreator: channelOfFollowedMember.guild.voiceAdapterCreator,
+        selfDeaf: false,
+        selfMute: false
+    })
+    voiceConnection?.on(VoiceConnectionStatus.Ready, (oldState, newState) => {
+        console.log(`Playing ${audioFile}`);
+        if(voiceConnection) {
+            const resource = createAudioResource(`./sounds/${audioFile}`, { inlineVolume: true });
+            resource.volume.setVolume(0.5);
+            const subscription = voiceConnection.subscribe(audioPlayer);
+            audioPlayer.play(resource);
 
-async function connectToChannel(channel) {
-    const connection = joinVoiceChannel({
-        channelId: channel.id,
-        guildID: channel.guild.id,
-        adapterCreator: channel.guild.voiceAdapterCreator
-      });
-}
+            audioPlayer.on(AudioPlayerStatus.Idle, () => {voiceConnection.disconnect()})
+        }
+    });
+};
 
-module.exports = play;
+module.exports = playMusic;
