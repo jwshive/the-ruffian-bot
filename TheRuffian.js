@@ -34,11 +34,7 @@ bot.on("guildMemberAdd", (member) => {
 // Mongo Stuff
 mongoose.set('strictQuery', false);
 mongoose
-  .connect(process.env.MONGO_URL, {
-    //useNewUrlParser: true,
-    ////useUnifiedTopology: true,
-    ////useCreateIndex: true,
-  })
+  .connect(process.env.MONGO_URL, {})
   .then(() => console.log("Mongo Engaged"))
   .catch((err) => console.log(`Mongo Error: ${err}`));
 
@@ -49,5 +45,3 @@ const clearKeys = require("./cron/remove-keys");
 const raidReminder = require("./cron/raid-reminder")(bot);
 // Send reminder on Monday for Officers Meeting.
 const officerMeetingReminder = require("./cron/officer-meeting-reminder")(bot);
-// Test Reminder.
-const testReminder = require("./cron/test_reminder")(bot);
