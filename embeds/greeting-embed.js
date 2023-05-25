@@ -1,5 +1,4 @@
 const { EmbedBuilder, AttachmentBuilder } = require("discord.js");
-const greeting_image = new AttachmentBuilder('./images', {name: 'wow_greeting.gif'});
 
 function greetingEmbed(member, progressionData) {
   // Send the message to a designated channel on a server:
@@ -27,7 +26,6 @@ function greetingEmbed(member, progressionData) {
         inline: true,
       }
     )
-    .setImage(greeting_image)
     .setTimestamp()
     .setFooter({text: "Please enjoy your stay, unless you aren't into that."});
   // Try to set their role to guests and pugs
