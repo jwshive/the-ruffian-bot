@@ -1,4 +1,4 @@
-const { Client, Intents, GatewayIntentBits, Discord } = require('discord.js');
+const { Client, Intents, GatewayIntentBits, Discord, ActivityType } = require('discord.js');
 const greetingEmbed = require("./embeds/greeting-embed");
 const DiscordMessageHandler = require('./DiscordMessageHandler');
 const path = require("path");
@@ -12,14 +12,10 @@ const messageHandler = new DiscordMessageHandler({ commandsDir: path.join(__dirn
 
 bot.on('ready', () => {
     console.log('Connected to Discord');
+    bot.user.setPresence({ activities: [{ name: 'with your emotions', type: ActivityType.Playing }], status: 'dnd', });
 });
 bot.on('messageCreate', messageHandler.handleMessage);
 bot.login(bot_token);
-
-// Get this bread
-bot.on("ready", () => {
-  bot.user.setActivity("!help", { type: "LISTENING" });
-});
 
 // Create an event listener for new guild members
 bot.on("guildMemberAdd", (member) => {
