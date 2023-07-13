@@ -38,7 +38,6 @@ module.exports = class DiscordMessageHandler {
                         this.commands[chatCommand.text] = chatCommand;
                     } catch (err) {
                         console.error(err);
-                        return;
                     }
                 });
             console.log(`Registered commands: ${Object.keys(this.commands)}`);

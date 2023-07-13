@@ -1,6 +1,6 @@
 const { Client, Intents, GatewayIntentBits, Discord, ActivityType } = require('discord.js');
 const greetingEmbed = require("./embeds/greeting-embed");
-const DiscordMessageHandler = require('./DiscordMessageHandler');
+const DiscordMessageHandler = require('./utils/DiscordMessageHandler');
 const path = require("path");
 const mongoose = require("mongoose");
 require('dotenv').config();
