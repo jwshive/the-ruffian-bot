@@ -26,6 +26,7 @@
     "mongoose": "^6.0.13",
     "mongoose-simple-random": "^0.4.1",
     "node-cron": "^3.0.2",
-    "tmi.js": "^1.8.5"
+    "tmi.js": "^1.8.5",
+    "title-case": "^4.1.2"
   }
 }
