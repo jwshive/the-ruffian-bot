@@ -48,6 +48,27 @@ function progressionEmbed(msg, data) {
         inline: true,
       }
     )
+    .addFields(
+      {
+        name: "Amirdrassil: The Dreams Hope",
+        value: data.raid_progression["amirdrassil-the-dreams-hope"].summary,
+      },
+      {
+        name: "Normal",
+        value: `${data.raid_progression["amirdrassil-the-dreams-hope"].normal_bosses_killed} / ${data.raid_progression["amirdrassil-the-dreams-hope"].total_bosses}`,
+        inline: true,
+      },
+      {
+        name: "Heroic",
+        value: `${data.raid_progression["amirdrassil-the-dreams-hope"].heroic_bosses_killed} / ${data.raid_progression["amirdrassil-the-dreams-hope"].total_bosses}`,
+        inline: true,
+      },
+      {
+        name: "Mythic",
+        value: `${data.raid_progression["amirdrassil-the-dreams-hope"].mythic_bosses_killed} / ${data.raid_progression["amirdrassil-the-dreams-hope"].total_bosses}`,
+        inline: true,
+      }
+    )
     .setTimestamp();
   msg.channel.send({ embeds: [embed] });
 }

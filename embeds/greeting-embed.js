@@ -11,7 +11,7 @@ function greetingEmbed(member, progressionData) {
     .setTitle(`Welcome, ${member.user.username}, to The Ruffian Posse - Grizzly Hills`)
     .setAuthor({name: member.client.user.username, iconURL: 'https://i.pinimg.com/564x/ba/3e/4e/ba3e4e3514a74c8709c55c45b6d850b1.jpg'})
     .setDescription(
-      `Welcome to The Ruffian Posse Discord Server and Pleasure Palace.\nFeel free to spy on us at Raider.IO and Warcraft Logs.\n Our current progression is\nVault of the Incarnates: ${progressionData.raid_progression["vault-of-the-incarnates"].summary}\nAberrus: The Shaowed Crucible: ${progressionData.raid_progression["aberrus-the-shadowed-crucible"].summary}`
+      `Welcome to The Ruffian Posse Discord Server and Pleasure Palace.\nFeel free to spy on us at Raider.IO and Warcraft Logs.\n Our current progression is\nVault of the Incarnates: ${progressionData.raid_progression["vault-of-the-incarnates"].summary}\nAberrus: The Shaowed Crucible: ${progressionData.raid_progression["aberrus-the-shadowed-crucible"].summary}\nAmirdrassil: The Dreams Hope: ${progressionData.raid_progression["amirdrassil-the-dreams-hope"].summary}`
     )
     .addFields(
       {
