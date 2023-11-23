@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require('discord.js');
-import { titleCase } from "title-case";
+const { titleCase } = require('title-case');
 
 function progressionEmbed(msg, data) {
   const embed = new EmbedBuilder()
