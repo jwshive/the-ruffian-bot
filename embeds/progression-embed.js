@@ -9,64 +9,22 @@ function progressionEmbed(msg, data) {
     .setAuthor({name: `Progression: ${data.name} - ${data.faction} - ${data.realm}`, iconURL: 'https://i.pinimg.com/564x/ba/3e/4e/ba3e4e3514a74c8709c55c45b6d850b1.jpg'})
     .addFields(
       {
-        name: "Vault of the Incarnates",
-        value: data.raid_progression["vault-of-the-incarnates"].summary,
+        name: "Nerubar Palace",
+        value: data.raid_progression["nerubar-palace"].summary,
       },
       {
         name: "Normal",
-        value: `${data.raid_progression["vault-of-the-incarnates"].normal_bosses_killed} / ${data.raid_progression["vault-of-the-incarnates"].total_bosses}`,
+        value: `${data.raid_progression["nerubar-palace"].normal_bosses_killed} / ${data.raid_progression["nerubar-palace"].total_bosses}`,
         inline: true,
       },
       {
         name: "Heroic",
-        value: `${data.raid_progression["vault-of-the-incarnates"].heroic_bosses_killed} / ${data.raid_progression["vault-of-the-incarnates"].total_bosses}`,
+        value: `${data.raid_progression["nerubar-palace"].heroic_bosses_killed} / ${data.raid_progression["nerubar-palace"].total_bosses}`,
         inline: true,
       },
       {
         name: "Mythic",
-        value: `${data.raid_progression["vault-of-the-incarnates"].mythic_bosses_killed} / ${data.raid_progression["vault-of-the-incarnates"].total_bosses}`,
-        inline: true,
-      }
-    )
-    .addFields(
-      {
-        name: "Aberrus: The Shaowed Crucible",
-        value: data.raid_progression["aberrus-the-shadowed-crucible"].summary,
-      },
-      {
-        name: "Normal",
-        value: `${data.raid_progression["aberrus-the-shadowed-crucible"].normal_bosses_killed} / ${data.raid_progression["aberrus-the-shadowed-crucible"].total_bosses}`,
-        inline: true,
-      },
-      {
-        name: "Heroic",
-        value: `${data.raid_progression["aberrus-the-shadowed-crucible"].heroic_bosses_killed} / ${data.raid_progression["aberrus-the-shadowed-crucible"].total_bosses}`,
-        inline: true,
-      },
-      {
-        name: "Mythic",
-        value: `${data.raid_progression["aberrus-the-shadowed-crucible"].mythic_bosses_killed} / ${data.raid_progression["aberrus-the-shadowed-crucible"].total_bosses}`,
-        inline: true,
-      }
-    )
-    .addFields(
-      {
-        name: "Amirdrassil: The Dreams Hope",
-        value: data.raid_progression["amirdrassil-the-dreams-hope"].summary,
-      },
-      {
-        name: "Normal",
-        value: `${data.raid_progression["amirdrassil-the-dreams-hope"].normal_bosses_killed} / ${data.raid_progression["amirdrassil-the-dreams-hope"].total_bosses}`,
-        inline: true,
-      },
-      {
-        name: "Heroic",
-        value: `${data.raid_progression["amirdrassil-the-dreams-hope"].heroic_bosses_killed} / ${data.raid_progression["amirdrassil-the-dreams-hope"].total_bosses}`,
-        inline: true,
-      },
-      {
-        name: "Mythic",
-        value: `${data.raid_progression["amirdrassil-the-dreams-hope"].mythic_bosses_killed} / ${data.raid_progression["amirdrassil-the-dreams-hope"].total_bosses}`,
+        value: `${data.raid_progression["nerubar-palace"].mythic_bosses_killed} / ${data.raid_progression["nerubar-palace"].total_bosses}`,
         inline: true,
       }
     )
