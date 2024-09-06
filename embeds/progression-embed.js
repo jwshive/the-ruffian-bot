@@ -9,7 +9,7 @@ function progressionEmbed(msg, data) {
     .setAuthor({name: `Progression: ${data.name} - ${data.faction} - ${data.realm}`, iconURL: 'https://i.pinimg.com/564x/ba/3e/4e/ba3e4e3514a74c8709c55c45b6d850b1.jpg'})
     .addFields(
       {
-        name: "Nerubar Palace",
+        name: "Nerub-ar Palace",
         value: data.raid_progression["nerubar-palace"].summary,
       },
       {
