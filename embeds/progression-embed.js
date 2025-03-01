@@ -28,6 +28,27 @@ function progressionEmbed(msg, data) {
         inline: true,
       }
     )
+    .addFields(
+      {
+        name: "Liberation of Undermine",
+        value: data.raid_progression["liberation-of-undermine"].summary,
+      },
+      {
+        name: "Normal",
+        value: `${data.raid_progression["liberation-of-undermine"].normal_bosses_killed} / ${data.raid_progression["liberation-of-undermine"].total_bosses}`,
+        inline: true,
+      },
+      {
+        name: "Heroic",
+        value: `${data.raid_progression["liberation-of-undermine"].heroic_bosses_killed} / ${data.raid_progression["liberation-of-undermine"].total_bosses}`,
+        inline: true,
+      },
+      {
+        name: "Mythic",
+        value: `${data.raid_progression["liberation-of-undermine"].mythic_bosses_killed} / ${data.raid_progression["liberation-of-undermine"].total_bosses}`,
+        inline: true,
+      }
+    )
     .setTimestamp();
   msg.channel.send({ embeds: [embed] });
 }
